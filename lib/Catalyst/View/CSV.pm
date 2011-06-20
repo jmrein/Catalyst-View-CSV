@@ -149,7 +149,7 @@ use mro "c3";
 use strict;
 use warnings;
 
-use 5.006;
+use 5.009_005;
 our $VERSION = "1.0";
 
 __PACKAGE__->mk_accessors ( qw ( csv charset suffix ) );

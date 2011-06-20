@@ -1,0 +1,10 @@
+\B\.git\b
+\B\.gitignore\b
+\bMANIFEST\.*
+\bMakefile$
+\bblib/
+\bpm_to_blib$
+~$
+\.bak$
+\.old$
+\.tar\.gz$
