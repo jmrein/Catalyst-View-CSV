@@ -14,17 +14,21 @@ sub literal :Local {
     [ "2", "bar" ],
     [ "3", "baz" ],
   ];
-  $c->stash ( data => $data, columns => [ qw ( index entry ) ] );
+  $c->stash ( data => $data,
+	      columns => [ qw ( index entry ) ],
+	      current_view => "CSV" );
 }
 
 sub db :Local {
   ( my $self, my $c ) = @_;
 
-  my $resultset = $c->model ( "TestDB::Person" )->search_rs ( {}, {
-    select => [ qw ( name ) ],
+  my $resultset = $c->model ( "TestDB::Person" )->search ( {}, {
+    select => [ qw ( name age ) ],
+    order_by => [ qw ( age name ) ],
   } );
   $c->stash ( cursor => $resultset->cursor,
-	      columns => [ qw ( index entry ) ] );
+	      columns => [ qw ( name age ) ],
+	      current_view => "CSV" );
 }
 
 sub end :ActionClass("RenderView") {
