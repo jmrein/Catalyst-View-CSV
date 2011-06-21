@@ -43,10 +43,9 @@ __DATA__
 __compclass__
 package [% class %];
 
+use base qw ( Catalyst::View::CSV );
 use strict;
 use warnings;
-
-use parent qw ( Catalyst::View::CSV );
 
 __PACKAGE__->config ( sep_char => "," );
 
