@@ -7,9 +7,13 @@ build_requires "Test::More";
 build_requires "Test::Exception";
 build_requires "Catalyst::Test";
 build_requires "FindBin";
+build_requires "Catalyst::Model::DBIC::Schema";
+build_requires "DBIx::Class::Schema";
+build_requires "DBD::SQLite";
 
 requires "Catalyst::View";
 requires "Text::CSV";
+recommends "Text::CSV_XS";
 requires "URI";
 
 WriteAll;

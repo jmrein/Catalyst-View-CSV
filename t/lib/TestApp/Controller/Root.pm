@@ -6,7 +6,7 @@ use warnings;
 
 __PACKAGE__->config->{namespace} = "";
 
-sub literal_csv :Path {
+sub literal :Local {
   ( my $self, my $c ) = @_;
 
   my $data = [
@@ -15,6 +15,16 @@ sub literal_csv :Path {
     [ "3", "baz" ],
   ];
   $c->stash ( data => $data, columns => [ qw ( index entry ) ] );
+}
+
+sub db :Local {
+  ( my $self, my $c ) = @_;
+
+  my $resultset = $c->model ( "TestDB::Person" )->search_rs ( {}, {
+    select => [ qw ( name ) ],
+  } );
+  $c->stash ( cursor => $resultset->cursor,
+	      columns => [ qw ( index entry ) ] );
 }
 
 sub end :ActionClass("RenderView") {
