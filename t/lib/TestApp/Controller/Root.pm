@@ -10,9 +10,9 @@ sub literal :Local {
   ( my $self, my $c ) = @_;
 
   my $data = [
-    [ "1", "foo" ],
-    [ "2", "bar" ],
-    [ "3", "baz" ],
+    [ "1", "first entry" ],
+    [ "2", "second" ],
+    [ "3", "third" ],
   ];
   $c->stash ( data => $data,
 	      columns => [ qw ( index entry ) ],
@@ -24,11 +24,34 @@ sub db :Local {
 
   my $resultset = $c->model ( "TestDB::Person" )->search ( {}, {
     select => [ qw ( name age ) ],
+    order_by => [ qw ( name age ) ],
+  } );
+  $c->stash ( cursor => $resultset->cursor,
+	      columns => [ qw ( Name Age ) ],
+	      current_view => "CSV" );
+}
+
+sub noheader :Local {
+  ( my $self, my $c ) = @_;
+
+  my $resultset = $c->model ( "TestDB::Person" )->search ( {}, {
+    select => [ qw ( name age ) ],
+    order_by => [ qw ( name age ) ],
+  } );
+  $c->stash ( cursor => $resultset->cursor,
+	      current_view => "CSV" );
+}
+
+sub tsv :Local {
+  ( my $self, my $c ) = @_;
+
+  my $resultset = $c->model ( "TestDB::Person" )->search ( {}, {
+    select => [ qw ( name age ) ],
     order_by => [ qw ( age name ) ],
   } );
   $c->stash ( cursor => $resultset->cursor,
-	      columns => [ qw ( name age ) ],
-	      current_view => "CSV" );
+	      columns => [ qw ( Name Age ) ],
+	      current_view => "TSV" );
 }
 
 sub end :ActionClass("RenderView") {
