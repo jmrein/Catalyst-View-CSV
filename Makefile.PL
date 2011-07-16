@@ -17,6 +17,7 @@ build_requires "DBIx::Class";
 build_requires "DBIx::Class::Schema";
 build_requires "DBD::SQLite";
 build_requires "FindBin";
+build_requires "Moose";
 
 requires "Catalyst::View";
 requires "Text::CSV";
