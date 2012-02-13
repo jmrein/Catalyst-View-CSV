@@ -259,8 +259,9 @@ sub process {
   # Set HTTP headers
   my $response = $c->response;
   my $headers = $response->headers;
-  my @content_type = ( "text/csv", "charset=".$charset,
-		       "header=".( $columns ? "present" : "absent" ) );
+  my @content_type = ( "text/csv",
+		       "header=".( $columns ? "present" : "absent" ),
+		       "charset=".$charset );
   $headers->content_type ( join ( "; ", @content_type ) );
   $headers->header ( "Content-disposition",
 		     "attachment; filename=".$filename );
