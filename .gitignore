@@ -1,5 +1,6 @@
 Makefile
-META.yml
+META.*
+MYMETA.*
 inc
 blib
 pm_to_blib
