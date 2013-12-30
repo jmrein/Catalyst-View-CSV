@@ -249,7 +249,8 @@ sub process {
 
   # Determine resulting CSV filename
   if ( ! defined $filename ) {
-    $filename = [ $c->req->uri->path_segments ]->[-1];
+    $filename = ( [ $c->req->uri->path_segments ]->[-1] ||
+		  [ $c->req->uri->path_segments ]->[-2] );
     if ( $suffix ) {
       $filename =~ s/\.[^.]*$//;
       $filename .= ".".$suffix;
