@@ -1,3 +1,5 @@
+	Use search(undef,\%attrs) rather than search({},\%attrs)
+
 1.4	2013-12-30
 
 	Use penultimate path component if final component is empty
