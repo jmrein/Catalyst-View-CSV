@@ -1,3 +1,5 @@
+1.6	2015-07-14
+
 	Explicitly check for failures from Text::CSV->new() (which
 	silently returns undef on error)
 	(reported by Mike W)
