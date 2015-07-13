@@ -225,7 +225,8 @@ sub new {
 
   # Create underlying Text::CSV object
   delete $config->{catalyst_component_name};
-  my $csv = Text::CSV->new ( $config );
+  my $csv = Text::CSV->new ( $config )
+      or die "Cannot use CSV view: ".Text::CSV->error_diag();
   $self->csv ( $csv );
 
   return $self;
