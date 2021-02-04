@@ -1,3 +1,7 @@
+1.7	2015-10-30
+
+	Include MYMETA.* in MANIFEST.SKIP (requested by CHORNY)
+
 1.6	2015-07-14
 
 	Explicitly check for failures from Text::CSV->new() (which
