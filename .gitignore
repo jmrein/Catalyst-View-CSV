@@ -8,3 +8,5 @@ MANIFEST
 *.bak
 *.old
 *.tar.gz
+Catalyst-View-CSV-*
+.build
